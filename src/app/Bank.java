@@ -1,6 +1,8 @@
 package app;
 
+import java.util.*;
 import java.util.ArrayList;
+import java.io.*;
 
 public class Bank {
 	// Variable for logging/not logging
@@ -76,13 +78,37 @@ public class Bank {
 	}
 
 	public void saveAccounts(String filename) {
-		// TODO
-		log("Save not yet implemented.");
+		try 
+		{
+			FileWriter saves = new FileWriter("savelist.txt");
+
+			for(Account a : accounts)
+			{
+			saves.append(a.toString() + " \n");
+			System.out.println("Account saved");
+			}
+			saves.close();
+
+		} catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		
+		log("Saved");
 	}
 
 	public void loadAccounts(String filename) {
 		// TODO
-		log("Load not yet implemented.");
+		try
+		{
+		Scanner filescan = new Scanner(new File(filename));
+		
+		log("Saved");
+		
+		} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 	}
 
 	private Account findAccount(int accountNumber) {
